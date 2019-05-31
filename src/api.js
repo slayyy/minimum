@@ -15,7 +15,7 @@ export default {
 
   getArticle: (id) =>{
     return new Promise ((resolve) => {
-      fetch('http://blog.etherial.fr/articles/'+id)
+      fetch(`http://blog.etherial.fr/articles/${id}`)
       .then((res) => {
         res.json().then((json) => {
           resolve(json.data)

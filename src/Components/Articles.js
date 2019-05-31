@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Link, NavLink } from "react-router-dom";
 import api from '../api'
 
 export default class Articles extends Component {
@@ -6,7 +7,7 @@ export default class Articles extends Component {
   constructor() {
     super()
     this.state = {
-      articles: [],
+      articles: []
     }
   };
 
@@ -25,13 +26,13 @@ export default class Articles extends Component {
         
           <h1>Articles</h1>
 
-          {this.state.articles.reverse().map((article) => {
+          {this.state.articles.reverse().map(article => {
             return(
               <div className="articles-wrapper" key={article.id}>
                 <div><strong>Auteur : </strong>{article.User.firstname} {article.User.lastname}</div>
                 <div><strong>Title : </strong>{article.title}</div>
                 <div><strong>Content : </strong>{article.content}</div>
-                <div><button onClick={() => { localStorage.setItem("articleId", article.id); console.log(localStorage) }}>Read More...</button></div>
+                <div><NavLink to={`/article/${article.id}`}><button>Read More...</button></NavLink></div>
               </div>
             )
           })}
